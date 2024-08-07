@@ -3,31 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 25, 20, 20;
+    --spotifygreen: #1DB954;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/*
+@media (prefers-color-scheme: light) {
+    :root {
+        --foreground-rgb: 0, 0, 0;
+        --background-rgb: 255, 255, 255;
+    }
 }
+*/
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+    font-size: 20px;
+}
+
+.spotifygreen {
+    background-color: #1DB954;
+    color: white;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }

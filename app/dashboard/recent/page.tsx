@@ -10,7 +10,7 @@ async function recentTracks(token: JWT) {
     .then(res => res.json())
 }
 
-export default function tracks() {
+export default function Recents() {
   const { data: session } = useSession();
   const token = session?.accessToken
 

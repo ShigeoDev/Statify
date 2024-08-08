@@ -10,7 +10,7 @@ async function topArtists(token: JWT) {
     .then(res => res.json())
 }
 
-export default function tracks() {
+export default function Artists() {
   const { data: session } = useSession();
   const token = session?.accessToken
 

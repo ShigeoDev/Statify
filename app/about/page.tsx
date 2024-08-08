@@ -5,7 +5,7 @@ export default function About() {
         <h1 className="text-4xl font-bold text-center">About</h1>
       </div>
       <p className="text-xl text-center px-10 max-w-5xl leading-9">
-        This web app is designed to easily deliver information about a user's Spotify account. No data about the user is stored. If you are interested, the source code for this web app is <span className="text-[--spotifygreen]"><a href="http://github.com/ShigeoDev" target="_blank">here</a></span>.
+        This web app is designed to easily deliver information about a user&apos;s Spotify account. No data about the user is stored. If you are interested, the source code for this web app is <span className="text-[--spotifygreen]"><a href="http://github.com/ShigeoDev" target="_blank">here</a></span>.
       </p>
     </div>
   );

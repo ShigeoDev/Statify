@@ -41,6 +41,7 @@ async function refreshAccessToken(token) {
 
 
 const authOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID ?? "",

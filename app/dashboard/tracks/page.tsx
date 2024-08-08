@@ -18,10 +18,7 @@ export default function Tracks() {
   const [tracks, setTracks] = useState<any[]>([]);
 
   useEffect(() => {
-    if (token) {
-
       topTrack(token).then(data => setTracks(data.items))
-    }
   }, [token])
 
   if (!session) {

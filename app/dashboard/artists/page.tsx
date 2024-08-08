@@ -18,9 +18,7 @@ export default function Artists() {
   const [artists, setArtists] = useState<any[]>([]);
 
   useEffect(() => {
-    if (token) {
       topArtists(token).then(data => setArtists(data.items))
-    }
   }, [token])
 
   if (!session) {

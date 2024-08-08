@@ -31,33 +31,35 @@ export default function Dashboard() {
 
 
   useEffect(() => {
-    topTrack(token).then(data => setTrack(data.items[0].album.images[0].url))
-    topArtist(token).then(data => setArtist(data.items[0].images[0].url))
-    recentlyPlayed(token).then(data => setRecent(data.items[0].track.album.images[0].url))
-  }, [])
+    if (token) {
+      topTrack(token).then(data => setTrack(data.items[0].album.images[0].url))
+      topArtist(token).then(data => setArtist(data.items[0].images[0].url))
+      recentlyPlayed(token).then(data => setRecent(data.items[0].track.album.images[0].url))
+    }
+  }, [token])
 
 
   if (!session) {
     redirect("/login");
   }
 
-    return (
-      <div className="lg:flex grid justify-center items-center h-screen overflow-auto">
-        <div className="grid lg:grid-cols-3 lg:mt-0 grid-cols-1 mt-[80px] mb-[40px] gap-10">
-          <Link href="/dashboard/tracks" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
-            <h2 className="font-bold my-3">Top Tracks</h2>
-            {track && <Image src={track} height={500} width={500} alt="track cover" className="w-40 h-40 rounded-md" />}
-          </Link>
-          <Link href="/dashboard/artists" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
-            <h2 className="font-bold my-3">Top Artists</h2>
-            {artist && <Image src={artist} height={500} width={500} alt="artist cover" className="w-40 h-40 rounded-md" />}
-          </Link>
-          <Link href="/dashboard/recent" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
-            <h2 className="font-bold my-3">Recently Played</h2>
-            {recent && <Image src={recent} height={500} width={500} alt="recent" className="w-40 h-40 rounded-md" />}
-          </Link>
-        </div>
+  return (
+    <div className="lg:flex grid justify-center items-center h-screen overflow-auto">
+      <div className="grid lg:grid-cols-3 lg:mt-0 grid-cols-1 mt-[80px] mb-[40px] gap-10">
+        <Link href="/dashboard/tracks" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
+          <h2 className="font-bold my-3">Top Tracks</h2>
+          {track && <Image src={track} height={500} width={500} alt="track cover" className="w-40 h-40 rounded-md" />}
+        </Link>
+        <Link href="/dashboard/artists" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
+          <h2 className="font-bold my-3">Top Artists</h2>
+          {artist && <Image src={artist} height={500} width={500} alt="artist cover" className="w-40 h-40 rounded-md" />}
+        </Link>
+        <Link href="/dashboard/recent" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
+          <h2 className="font-bold my-3">Recently Played</h2>
+          {recent && <Image src={recent} height={500} width={500} alt="recent" className="w-40 h-40 rounded-md" />}
+        </Link>
       </div>
-    )
+    </div>
+  )
 }
 

@@ -18,8 +18,10 @@ export default function Recents() {
   const [recent, setRecent] = useState<any[]>([]);
 
   useEffect(() => {
-    recentTracks(token).then(data => setRecent(data.items))
-  }, [])
+    if (token) {
+      recentTracks(token).then(data => setRecent(data.items))
+    }
+  }, [token])
 
   console.log(recent)
 
@@ -31,7 +33,7 @@ export default function Recents() {
       <div className="grid grid-cols-1 justify-items-center justify-center items-center h-screen overflow-auto">
         <div className="my-20 mx-5">
           <h1 className="lg:text-5xl text-4xl font-bold tracking-widest text-center mx-[20px]">Your Recent Tracks</h1>
-          <hr className="mt-5"/>
+          <hr className="mt-5" />
           <ul className="mt-10 mx:[10px]">
             {recent && recent.map((track: any) => {
               return (

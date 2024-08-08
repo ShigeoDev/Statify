@@ -18,8 +18,11 @@ export default function Tracks() {
   const [tracks, setTracks] = useState<any[]>([]);
 
   useEffect(() => {
-    topTrack(token).then(data => setTracks(data.items))
-  }, [])
+    if (token) {
+
+      topTrack(token).then(data => setTracks(data.items))
+    }
+  }, [token])
 
   if (!session) {
     redirect("/login");
@@ -29,7 +32,7 @@ export default function Tracks() {
       <div className="grid grid-cols-1 justify-items-center justify-center items-center h-screen overflow-auto">
         <div className="my-20 mx-5">
           <h1 className="lg:text-5xl text-4xl font-bold tracking-widest text-center mx-[20px]">Your Top Tracks</h1>
-          <hr className="mt-5"/>
+          <hr className="mt-5" />
           <ul className="mt-10 mx:[10px]">
             {tracks && tracks.map((track: any) => {
               return (

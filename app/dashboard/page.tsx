@@ -31,10 +31,12 @@ export default function Dashboard() {
 
 
   useEffect(() => {
+    if (session && token) {
       topTrack(token).then(data => setTrack(data.items[0].album.images[0].url))
       topArtist(token).then(data => setArtist(data.items[0].images[0].url))
       recentlyPlayed(token).then(data => setRecent(data.items[0].track.album.images[0].url))
-  }, [token])
+    }
+  }, [session])
 
 
   if (!session) {

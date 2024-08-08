@@ -18,8 +18,10 @@ export default function Artists() {
   const [artists, setArtists] = useState<any[]>([]);
 
   useEffect(() => {
+    if (session && token) {
       topArtists(token).then(data => setArtists(data.items))
-  }, [token])
+    }
+  }, [session])
 
   if (!session) {
     redirect("/login");

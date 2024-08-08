@@ -18,8 +18,10 @@ export default function Tracks() {
   const [tracks, setTracks] = useState<any[]>([]);
 
   useEffect(() => {
+    if (session && token) {
       topTrack(token).then(data => setTracks(data.items))
-  }, [token])
+    }
+  }, [session])
 
   if (!session) {
     redirect("/login");

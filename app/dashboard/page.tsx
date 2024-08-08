@@ -42,14 +42,14 @@ export default function Dashboard() {
   }
 
     return (
-      <div className="lg:flex grid justify-center items-center h-screen overflow-scroll">
+      <div className="lg:flex grid justify-center items-center h-screen overflow-auto">
         <div className="grid lg:grid-cols-3 lg:mt-0 grid-cols-1 mt-[80px] mb-[40px] gap-10">
           <Link href="/dashboard/tracks" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
-            <h2 className="font-bold my-3">Top Tracks</h2>
+            <h2 className="font-bold my-3">Top Artists</h2>
             {track && <img src={track} alt="track cover" className="w-40 h-40 rounded-md" />}
           </Link>
-          <Link href="/dashboard/albums" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
-            <h2 className="font-bold my-3">Top Albums</h2>
+          <Link href="/dashboard/artists" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
+            <h2 className="font-bold my-3">Top Artists</h2>
             {artist && <img src={artist} alt="artist cover" className="w-40 h-40 rounded-md" />}
           </Link>
           <Link href="/dashboard/recent" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">

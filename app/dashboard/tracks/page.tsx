@@ -14,7 +14,7 @@ export default function tracks() {
   const { data: session } = useSession();
   const token = session?.accessToken
 
-  const [tracks, setTracks] = useState(null);
+  const [tracks, setTracks] = useState<any[]>([]);
 
   useEffect(() => {
     topTrack(token).then(data => setTracks(data.items))
@@ -25,18 +25,18 @@ export default function tracks() {
   }
   else {
     return (
-      <div className="grid justify-center mt-40 overflow-x-scroll">
-        <div>
-          <h1 className="text-5xl font-bold tracking-widest">Your Top Tracks</h1>
-          <hr />
-          <ul className="lg:mt-0 mt-[60px]">
+      <div className="grid grid-cols-1 justify-items-center justify-center items-center h-screen overflow-auto">
+        <div className="my-20 mx-5">
+          <h1 className="lg:text-5xl text-4xl font-bold tracking-widest text-center mx-[20px]">Your Top Tracks</h1>
+          <hr className="mt-5"/>
+          <ul className="mt-10 mx:[10px]">
             {tracks && tracks.map((track: any) => {
               return (
-                <li key={track.name} className="flex items-center gap-4 mt-4">
-                  <img src={track.album.images[0].url} alt="track cover" className="w-20 h-20 rounded-md" />
+                <li key={track.name} className="flex items-center gap-4 mt-4 mx-[25px]">
+                  <img src={track.album.images[0].url} alt="track cover" className="w-[60px] h-[60px] rounded-md" />
                   <div>
-                    <h2 className="font-bold">{track.name}</h2>
-                    <p>{track.artists[0].name}</p>
+                    <h2 className="font-bold lg:text-xl text-sm">{track.name}</h2>
+                    <p className="lg:text-xl text-sm">{track.artists[0].name}</p>
                   </div>
                 </li>
               )

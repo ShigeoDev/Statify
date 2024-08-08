@@ -1,4 +1,5 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
+import NextAuth, { Account, NextAuthOptions } from "next-auth"
+import { JWT } from "next-auth/jwt"
 import SpotifyProvider from "next-auth/providers/spotify"
 
 const scopes = [
@@ -18,6 +19,7 @@ const params = new URLSearchParams({
 
 const LOGIN_URL = `https://accounts.spotify.com/authorize?${params.toString()}`
 
+
 export const authOptions: NextAuthOptions = {
   providers: [
     SpotifyProvider({
@@ -35,10 +37,13 @@ export const authOptions: NextAuthOptions = {
       // Persist the OAuth access_token to the token right after signin
       if (account) {
         token.accessToken = account.access_token
+        token.refreshToken = account.refresh_token
+        token.accessTokenExpires = account.expires_at
       }
       return token
+
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       // Send properties to the client, like an access_token from a provider.
       session.accessToken = token.accessToken
       return session

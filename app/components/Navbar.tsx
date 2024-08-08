@@ -18,7 +18,7 @@ function LoginButton() {
 
   if (!session) {
     return (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mr-4">
         <a href="/login" className="text-lg font-bold">Login</a>
       </div>
     )
@@ -26,12 +26,12 @@ function LoginButton() {
   else {
     return (
       <div ref={ref}>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mr-4">
           <button onClick={() => dropdown()} className="text-lg font-bold">{session?.user?.name}</button>
         </div>
         {visible &&
           <div>
-            <button onClick={() => signOut({ callbackUrl: "/" })} className="text-lg font-bold absolute right-4 top-[60px] spotifygreen w-[7rem] h-[3rem] rounded-full">Sign Out</button>
+            <button onClick={() => signOut({ callbackUrl: "/" })} className="text-lg font-bold absolute right-8 top-[60px] spotifygreen w-[7rem] h-[3rem] rounded-full">Sign Out</button>
           </div>
         }
       </div>
@@ -46,8 +46,8 @@ export default function Navbar() {
   const path = usePathname();
 
   return (
-    <nav className="bg-[#191414] absolute w-screen flex items-center justify-between p-4">
-      <div className="flex items-center gap-4">
+    <nav className="bg-[#191414] fixed w-screen flex items-center justify-between p-4">
+      <div className="flex items-center gap-4 ml-4">
         <a href="/" className="text-lg font-bold">
           <Image src={statify} alt="statify" width={30} height={30} />
         </a>

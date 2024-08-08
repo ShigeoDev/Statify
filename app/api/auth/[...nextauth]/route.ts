@@ -1,5 +1,4 @@
-import NextAuth, { Account, NextAuthOptions } from "next-auth"
-import { JWT } from "next-auth/jwt"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import SpotifyProvider from "next-auth/providers/spotify"
 
 const scopes = [
@@ -51,7 +50,7 @@ export const authOptions: NextAuthOptions = {
   }
 }
 
-export const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
 

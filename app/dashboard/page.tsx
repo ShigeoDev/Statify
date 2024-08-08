@@ -45,7 +45,7 @@ export default function Dashboard() {
       <div className="lg:flex grid justify-center items-center h-screen overflow-auto">
         <div className="grid lg:grid-cols-3 lg:mt-0 grid-cols-1 mt-[80px] mb-[40px] gap-10">
           <Link href="/dashboard/tracks" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">
-            <h2 className="font-bold my-3">Top Artists</h2>
+            <h2 className="font-bold my-3">Top Tracks</h2>
             {track && <img src={track} alt="track cover" className="w-40 h-40 rounded-md" />}
           </Link>
           <Link href="/dashboard/artists" className="spotifygreen w-60 h-60 rounded-md flex flex-col items-center">

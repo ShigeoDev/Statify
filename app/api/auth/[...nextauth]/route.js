@@ -49,7 +49,6 @@ const authOptions = {
       authorization: LOGIN_URL,
     }),
   ],
-  secret: process.env.JWT_SECRET,
   pages: {
     signIn: "/login",
   },

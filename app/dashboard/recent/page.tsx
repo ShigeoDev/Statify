@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
 import { JWT } from "next-auth/jwt";
+import Image from "next/image";
 
 async function recentTracks(token: JWT) {
   return await fetch("https://api.spotify.com/v1/me/player/recently-played?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
@@ -35,7 +36,7 @@ export default function Recents() {
             {recent && recent.map((track: any) => {
               return (
                 <li key={track.track.name} className="flex items-center gap-4 mt-4 mx-[25px]">
-                  <img src={track.track.album.images[0].url} alt="track cover" className="w-[60px] h-[60px] rounded-md" />
+                  <Image height={500} width={500} src={track.track.album.images[0].url} alt="track cover" className="w-[60px] h-[60px] rounded-md" />
                   <div>
                     <h2 className="font-bold lg:text-xl text-sm">{track.track.name}</h2>
                     <p className="lg:text-xl text-sm">{track.track.artists[0].name}</p>

@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
 import { JWT } from "next-auth/jwt";
+import Image from "next/image";
 
 async function topArtists(token: JWT) {
   return await fetch("https://api.spotify.com/v1/me/top/artists?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
@@ -33,7 +34,7 @@ export default function Artists() {
             {artists && artists.map((artists: any) => {
               return (
                 <li key={artists.name} className="flex items-center gap-4 mt-4 mx-[25px]">
-                  <img src={artists.images[0].url} alt="track cover" className="w-[60px] h-[60px] rounded-md" />
+                  <Image width={500} height={500} src={artists.images[0].url} alt="track cover" className="w-[60px] h-[60px] rounded-md" />
                   <div>
                     <h2 className="font-bold lg:text-xl text-sm">{artists.name}</h2>
                   </div>

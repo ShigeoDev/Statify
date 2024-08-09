@@ -25,7 +25,9 @@ export default function Dashboard() {
         fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
           .then(res => res.json())
           .then(data => setRecent(data.items[0].track.album.images[0].url))
+      console.log('fetched')
       }
+    console.log('error')
   }, [session, token])
 
 

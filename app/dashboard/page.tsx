@@ -7,21 +7,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-async function topTrack(token: JWT) {
-  return await fetch("https://api.spotify.com/v1/me/top/tracks?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-    .then(res => res.json())
-}
-
-async function topArtist(token: JWT) {
-  return await fetch("https://api.spotify.com/v1/me/top/artists?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-    .then(res => res.json())
-}
-
-async function recentlyPlayed(token: JWT) {
-  return await fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-    .then(res => res.json())
-}
-
 export default function Dashboard() {
   const { data: session } = useSession();
   const token = session?.accessToken
@@ -33,9 +18,15 @@ export default function Dashboard() {
   useEffect(() => {
     (async function waitSession() {
       if (token) {
-        topTrack(token).then(data => setTrack(data.items[0].album.images[0].url))
-        topArtist(token).then(data => setArtist(data.items[0].images[0].url))
-        recentlyPlayed(token).then(data => setRecent(data.items[0].track.album.images[0].url))
+        fetch("https://api.spotify.com/v1/me/top/tracks?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+          .then(res => res.json())
+          .then(data => setTrack(data.items[0].album.images[0].url))
+        fetch("https://api.spotify.com/v1/me/top/artists?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+          .then(res => res.json())
+          .then(data => setArtist(data.items[0].images[0].url))
+        fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+          .then(res => res.json())
+          .then(data => setRecent(data.items[0].track.album.images[0].url))
       }
     })()
   }, [token])

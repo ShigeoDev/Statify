@@ -23,7 +23,7 @@ export default function Artists() {
         topArtists(token).then(data => setArtists(data.items))
       }
     })()
-  }, [session])
+  }, [token])
 
   if (!session) {
     redirect("/login");

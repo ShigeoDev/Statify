@@ -19,11 +19,11 @@ export default function Tracks() {
 
   useEffect(() => {
     (async function waitSession() {
-      if (session && token) {
+      if (token) {
         topTrack(token).then(data => setTracks(data.items))
       }
     })()
-  }, [session])
+  }, [token])
 
 if (!session) {
   redirect("/login");

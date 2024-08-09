@@ -19,11 +19,11 @@ export default function Recents() {
 
   useEffect(() => {
     (async function waitSession() {
-      if (session && token) {
+      if (token) {
         recentTracks(token).then(data => setRecent(data.items))
       }
     })()
-  }, [session])
+  }, [token])
 
   console.log(recent)
 

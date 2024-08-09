@@ -18,10 +18,12 @@ export default function Recents() {
   const [recent, setRecent] = useState<any[]>([]);
 
   useEffect(() => {
-    if (token) {
-      recentTracks(token).then(data => setRecent(data.items))
-    }
-  }, [token])
+    (async function waitSession() {
+      if (session && token) {
+        recentTracks(token).then(data => setRecent(data.items))
+      }
+    })()
+  }, [session])
 
   console.log(recent)
 

@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Dashboard() {
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
   const token = session?.accessToken
   const [track, setTrack] = useState(null)
   const [artist, setArtist] = useState(null)
@@ -15,8 +15,6 @@ export default function Dashboard() {
 
 
   useEffect(() => {
-      console.log(session)
-      console.log(token)
       if (token) {
         fetch("https://api.spotify.com/v1/me/top/tracks?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
           .then(res => res.json())
@@ -28,7 +26,7 @@ export default function Dashboard() {
           .then(res => res.json())
           .then(data => setRecent(data.items[0].track.album.images[0].url))
       }
-  }, [session, token])
+  }, [session, token, update])
 
 
   if (!session) {

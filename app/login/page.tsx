@@ -3,6 +3,7 @@
 import { signIn, signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Login() {
   const { data: session } = useSession();
@@ -18,7 +19,7 @@ export default function Login() {
           className="px-3 py-2 border border-neutral-700 bg-neutral-800 rounded p-1 text-sm inline-flex items-center leading-4 text-neutral-100 w-60 h-16"
           onClick={() => signIn('spotify', {callbackUrl: '/dashboard'})} 
         >
-          <img src="/spotify.svg" alt="Spotify Logo" className="h-[35px] w-[35px]" />
+          <Image src="/spotify.svg" height={35} width={35} alt="Spotify Logo" className="h-[35px] w-[35px]" />
           <div className="ml-3 text-lg">Sign in with Spotify</div>
         </button>
 

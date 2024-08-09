@@ -6,19 +6,20 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Artists() {
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
   const token = session?.accessToken
 
   const [artists, setArtists] = useState<any[]>([]);
 
   useEffect(() => {
-    (async function waitSession() {
       if (token) {
         fetch("https://api.spotify.com/v1/me/top/artists?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
           .then(res => res.json())
           .then(data => setArtists(data.items))
       }
-    })()
+    else {
+      update()
+    }
   }, [session, token])
 
   if (!session) {

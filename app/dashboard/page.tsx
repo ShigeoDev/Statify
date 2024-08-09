@@ -15,6 +15,8 @@ export default function Dashboard() {
 
 
   useEffect(() => {
+      console.log(session)
+      console.log(token)
       if (token) {
         fetch("https://api.spotify.com/v1/me/top/tracks?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
           .then(res => res.json())
@@ -25,9 +27,7 @@ export default function Dashboard() {
         fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
           .then(res => res.json())
           .then(data => setRecent(data.items[0].track.album.images[0].url))
-      console.log('fetched')
       }
-    console.log('error')
   }, [session, token])
 
 

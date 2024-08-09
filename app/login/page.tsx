@@ -16,7 +16,7 @@ export default function Login() {
     <div className="flex flex-col justify-center items-center h-screen">
 
       <p className="text-xl text-center px-10 max-w-5xl leading-9 mb-10">
-        Unfortunaly, due to limits on Spotify's API and this web app being in development mode, only 25 registered users can access this web app. To gain permission, contact nigelloh15@gmail.com.
+        Unfortunaly, due to limits on Spotify&apos;s API and this web app being in development mode, only 25 registered users can access this web app. To gain permission, contact nigelloh15@gmail.com.
       </p>
       {!session ? (
         <button

@@ -17,12 +17,13 @@ export default function Tracks() {
 
   const [tracks, setTracks] = useState<any[]>([]);
 
-  console.log(session)
-
   useEffect(() => {
     (async function waitSession() {
       if (session && token) {
         topTrack(token).then(data => setTracks(data.items))
+      }
+      else {
+        console.log("error")
       }
     })()
   }, [session])

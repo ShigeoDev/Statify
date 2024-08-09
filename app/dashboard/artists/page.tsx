@@ -3,7 +3,6 @@
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
-import { JWT } from "next-auth/jwt";
 import Image from "next/image";
 
 export default function Artists() {
@@ -20,7 +19,7 @@ export default function Artists() {
           .then(data => setArtists(data.items))
       }
     })()
-  }, [token])
+  }, [session, token])
 
   if (!session) {
     redirect("/login");

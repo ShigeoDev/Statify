@@ -28,7 +28,7 @@ export default function Dashboard() {
           .then(data => setRecent(data.items[0].track.album.images[0].url))
       }
     })()
-  }, [token])
+  }, [session, token])
 
 
   if (!session) {

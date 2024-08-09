@@ -19,9 +19,7 @@ export default function Recents() {
           .then(data => setRecent(data.items))
       }
     })()
-  }, [token])
-
-  console.log(recent)
+  }, [session, token])
 
   if (!session) {
     redirect("/login");

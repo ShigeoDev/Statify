@@ -22,11 +22,8 @@ export default function Tracks() {
       if (session && token) {
         topTrack(token).then(data => setTracks(data.items))
       }
-      else {
-        console.log("error")
-      }
     })()
-  }, [session])
+  }, [session, tracks])
 
 if (!session) {
   redirect("/login");

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -26,7 +26,10 @@ export default function Dashboard() {
           .then(res => res.json())
           .then(data => setRecent(data.items[0].track.album.images[0].url))
       }
-  }, [session, token, update])
+      else {
+      update()
+    }
+  }, [session, token])
 
 
   if (!session) {

@@ -13,6 +13,9 @@ export default function Dashboard() {
   const [artist, setArtist] = useState(null)
   const [recent, setRecent] = useState(null)
 
+  if (!session) {
+    redirect("/login");
+  }
 
   useEffect(() => {
     if (token) {
@@ -30,11 +33,6 @@ export default function Dashboard() {
       update()
     }
   }, [session, token])
-
-
-  if (!session) {
-    redirect("/login");
-  }
 
   return (
     <div className="lg:flex grid justify-center items-center h-screen overflow-auto">

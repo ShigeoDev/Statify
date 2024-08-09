@@ -11,6 +11,10 @@ export default function Recents() {
 
   const [recent, setRecent] = useState<any[]>([]);
 
+  if (!session) {
+    redirect("/login");
+  }
+
   useEffect(() => {
     if (token) {
       fetch("https://api.spotify.com/v1/me/player/recently-played?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
@@ -22,10 +26,6 @@ export default function Recents() {
     }
   }, [session, token])
 
-if (!session) {
-  redirect("/login");
-}
-else {
   return (
     <div className="grid grid-cols-1 justify-items-center justify-center items-center h-screen overflow-auto">
       <div className="my-20 mx-5">
@@ -47,5 +47,4 @@ else {
       </div>
     </div>
   )
-}
 }

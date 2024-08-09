@@ -6,11 +6,6 @@ import { useState, useEffect } from "react";
 import { JWT } from "next-auth/jwt";
 import Image from "next/image";
 
-async function topArtists(token: JWT) {
-  return await fetch("https://api.spotify.com/v1/me/top/artists?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-    .then(res => res.json())
-}
-
 export default function Artists() {
   const { data: session } = useSession();
   const token = session?.accessToken
@@ -20,7 +15,9 @@ export default function Artists() {
   useEffect(() => {
     (async function waitSession() {
       if (token) {
-        topArtists(token).then(data => setArtists(data.items))
+        fetch("https://api.spotify.com/v1/me/top/artists?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+          .then(res => res.json())
+          .then(data => setArtists(data.items))
       }
     })()
   }, [token])

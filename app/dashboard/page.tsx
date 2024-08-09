@@ -2,7 +2,6 @@
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { JWT } from "next-auth/jwt";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";

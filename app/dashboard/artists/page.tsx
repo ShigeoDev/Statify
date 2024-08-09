@@ -12,11 +12,11 @@ export default function Artists() {
   const [artists, setArtists] = useState<any[]>([]);
 
   useEffect(() => {
-      if (token) {
-        fetch("https://api.spotify.com/v1/me/top/artists?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-          .then(res => res.json())
-          .then(data => setArtists(data.items))
-      }
+    if (token) {
+      fetch("https://api.spotify.com/v1/me/top/artists?limit=10", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.json())
+        .then(data => setArtists(data.items))
+    }
     else {
       update()
     }

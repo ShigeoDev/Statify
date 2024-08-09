@@ -15,18 +15,18 @@ export default function Dashboard() {
 
 
   useEffect(() => {
-      if (token) {
-        fetch("https://api.spotify.com/v1/me/top/tracks?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-          .then(res => res.json())
-          .then(data => setTrack(data.items[0].album.images[0].url))
-        fetch("https://api.spotify.com/v1/me/top/artists?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-          .then(res => res.json())
-          .then(data => setArtist(data.items[0].images[0].url))
-        fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
-          .then(res => res.json())
-          .then(data => setRecent(data.items[0].track.album.images[0].url))
-      }
-      else {
+    if (token) {
+      fetch("https://api.spotify.com/v1/me/top/tracks?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.json())
+        .then(data => setTrack(data.items[0].album.images[0].url))
+      fetch("https://api.spotify.com/v1/me/top/artists?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.json())
+        .then(data => setArtist(data.items[0].images[0].url))
+      fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", { method: "GET", headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.json())
+        .then(data => setRecent(data.items[0].track.album.images[0].url))
+    }
+    else {
       update()
     }
   }, [session, token])

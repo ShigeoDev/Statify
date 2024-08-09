@@ -23,7 +23,7 @@ export default function Tracks() {
         topTrack(token).then(data => setTracks(data.items))
       }
     })()
-  }, [session, tracks])
+  }, [session])
 
 if (!session) {
   redirect("/login");
